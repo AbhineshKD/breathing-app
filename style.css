@@ -1,0 +1,366 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  color: #17322c;
+  background: #eef7f3;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 20% 10%,
+      rgba(177, 224, 207, 0.7),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(199, 226, 239, 0.65),
+      transparent 35%
+    ),
+    #eef7f3;
+}
+
+.app {
+  min-height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  padding: 24px;
+}
+
+.card {
+  width: min(100%, 520px);
+
+  padding: 32px 28px;
+
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 24px 70px rgba(34, 73, 62, 0.14);
+
+  backdrop-filter: blur(10px);
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+
+  opacity: 0.55;
+}
+
+h1 {
+  margin: 8px 0 6px;
+
+  font-size: clamp(32px, 8vw, 48px);
+
+  line-height: 1;
+}
+
+.subtitle {
+  margin: 0 auto 26px;
+
+  max-width: 380px;
+
+  color: #5d756e;
+}
+
+.settings {
+  text-align: left;
+
+  margin-bottom: 20px;
+}
+
+.settings label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-weight: 700;
+}
+
+.duration-row {
+  display: flex;
+
+  gap: 10px;
+}
+
+select,
+input[type="number"] {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  border: 1px solid #d5e4df;
+
+  border-radius: 14px;
+
+  background: white;
+
+  color: inherit;
+
+  font: inherit;
+
+  outline: none;
+}
+
+select:focus,
+input[type="number"]:focus {
+  border-color: #79a99b;
+
+  box-shadow:
+    0 0 0 3px rgba(121, 169, 155, 0.16);
+}
+
+/* Breathing circle */
+
+.breath-orb {
+  width: 118px;
+  height: 118px;
+
+  margin: 24px auto 18px;
+
+  border-radius: 50%;
+
+  background: #a8d9c6;
+
+  box-shadow:
+    0 0 0 18px rgba(168, 217, 198, 0.15),
+    0 15px 35px rgba(83, 139, 119, 0.2);
+
+  transform: scale(1);
+
+  transition:
+    transform 9.6s ease-in-out,
+    background-color 0.4s ease;
+}
+
+.breath-orb.in {
+  transform: scale(1.28);
+}
+
+.breath-orb.out {
+  transform: scale(0.82);
+}
+
+/* Instructions */
+
+.instruction {
+  min-height: 42px;
+
+  font-size: 30px;
+
+  font-weight: 800;
+}
+
+.cycle {
+  min-height: 24px;
+
+  margin-top: 2px;
+
+  color: #71857f;
+
+  font-size: 14px;
+}
+
+/* Main timer */
+
+.countdown {
+  margin: 8px 0 16px;
+
+  font-size: clamp(56px, 15vw, 84px);
+
+  line-height: 1;
+
+  font-variant-numeric: tabular-nums;
+
+  letter-spacing: -0.04em;
+}
+
+/* Progress bar */
+
+.progress {
+  height: 8px;
+
+  overflow: hidden;
+
+  border-radius: 99px;
+
+  background: #e4eeea;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+
+  transform-origin: left;
+
+  background: #7fb7a2;
+
+  transition: transform 0.25s linear;
+}
+
+/* Buttons */
+
+.controls {
+  display: grid;
+
+  grid-template-columns: 1.3fr 1fr 1fr;
+
+  gap: 10px;
+
+  margin-top: 22px;
+}
+
+button {
+  padding: 13px 12px;
+
+  border: 0;
+
+  border-radius: 14px;
+
+  background: #e8f0ed;
+
+  color: #17322c;
+
+  font: inherit;
+
+  font-weight: 750;
+
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(0.97);
+}
+
+button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+}
+
+button.primary {
+  background: #2e6f5d;
+
+  color: white;
+}
+
+/* Voice switch */
+
+.voice-row {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 20px;
+
+  font-size: 14px;
+
+  color: #5d756e;
+}
+
+.switch {
+  position: relative;
+
+  width: 42px;
+  height: 24px;
+
+  margin: 0;
+}
+
+.switch input {
+  opacity: 0;
+
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: 99px;
+
+  background: #cbd9d5;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.slider:before {
+  content: "";
+
+  position: absolute;
+
+  width: 18px;
+  height: 18px;
+
+  left: 3px;
+  top: 3px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  transition: 0.2s;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.switch input:checked + .slider {
+  background: #5d9a85;
+}
+
+.switch input:checked + .slider:before {
+  transform: translateX(18px);
+}
+
+.note {
+  min-height: 20px;
+
+  margin: 16px 0 0;
+
+  color: #71857f;
+
+  font-size: 13px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Mobile */
+
+@media (max-width: 420px) {
+  .card {
+    padding: 26px 18px;
+
+    border-radius: 22px;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}

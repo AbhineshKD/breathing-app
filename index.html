@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breathing Timer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="app">
+    <section class="card">
+      <div class="eyebrow">MINDFUL BREATHING</div>
+
+      <h1>Breathing Timer</h1>
+      <p class="subtitle">
+        Follow the voice and breathe at your own pace.
+      </p>
+
+      <div class="settings">
+        <label for="duration">Session duration</label>
+
+        <div class="duration-row">
+          <select id="duration">
+            <option value="60">1 minute</option>
+            <option value="300" selected>5 minutes</option>
+            <option value="600">10 minutes</option>
+            <option value="1200">20 minutes</option>
+            <option value="1800">30 minutes</option>
+            <option value="custom">Custom</option>
+          </select>
+
+          <input
+            id="customMinutes"
+            type="number"
+            min="1"
+            max="180"
+            placeholder="Minutes"
+            hidden
+          />
+        </div>
+      </div>
+
+      <!-- Breathing animation -->
+      <div class="breath-orb" id="breathOrb"></div>
+
+      <!-- Current instruction -->
+      <div class="instruction" id="instruction">
+        Ready?
+      </div>
+
+      <div class="cycle" id="cycle">
+        Press Start to begin
+      </div>
+
+      <!-- Main session countdown -->
+      <div class="countdown" id="countdown">
+        05:00
+      </div>
+
+      <!-- Progress -->
+      <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <button class="primary" id="startBtn">
+          Start
+        </button>
+
+        <button id="pauseBtn" disabled>
+          Pause
+        </button>
+
+        <button id="stopBtn" disabled>
+          Stop
+        </button>
+      </div>
+
+      <!-- Voice -->
+      <div class="voice-row">
+        <label class="switch">
+          <input type="checkbox" id="voiceToggle" checked />
+          <span class="slider"></span>
+        </label>
+
+        <span>Voice guidance</span>
+      </div>
+
+      <p class="note" id="status">
+        Choose a duration and press Start.
+      </p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
